@@ -1,0 +1,22 @@
+{
+  "name": "myservernode",
+  "version": "1.0.0",
+  "description": "Esame pratico di backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArturoVaccari/MyServerNode.git"
+  },
+  "author": "Vaccari_Arturo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArturoVaccari/MyServerNode/issues"
+  },
+  "homepage": "https://github.com/ArturoVaccari/MyServerNode#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
