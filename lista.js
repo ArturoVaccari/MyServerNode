@@ -56,10 +56,7 @@ if (azione){
     status.campo = "azione"
 
 }
-
-
-
-console.log(titolo, descrizione)
+console.log(id, titolo, descrizione, azione)
 res.send(status)
 })
 
