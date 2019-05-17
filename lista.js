@@ -28,7 +28,7 @@ if (azione){
             status.code = "elenca"
           } else {
             status.code = "error"
-            status.message = "titolo sbagliato"
+            status.message = "titolo mancante"
             status.campo = "titolo"
           } 
     }
