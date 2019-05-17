@@ -50,6 +50,11 @@ if (azione){
             status.campo = "id"
         }
     }
+} else {
+    status.code = "error"
+    status.message = "azione mancante"
+    status.campo = "azione"
+
 }
 
 
