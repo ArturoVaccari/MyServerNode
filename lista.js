@@ -9,24 +9,52 @@ router.get('/', (req, res, next) => {
 router.get("/:id", (req, res) => {
     const id = Number(req.params.id)
     res.json(lista.list.filter(item => item.id === id))
-  })
+})
   
 router.post('/', (req, res) => {
 const body = req.body
 const {
+    id,
     titolo,
-    descrizione
+    descrizione,
+    azione
 } = req.body
 
 const status = {}
-console.log(titolo, descrizione)
-if (titolo) {
-  status.code = 'ok'
-} else {
-  status.code = 'error'
-  status.message = 'titolo sbagliato'
-  status.campo = 'titolo'
+
+if (azione){
+    if (azione === "elenca"){
+        if (titolo) {
+            status.code = "elenca"
+          } else {
+            status.code = "error"
+            status.message = "titolo sbagliato"
+            status.campo = "titolo"
+          } 
+    }
+    else if (azione === "aggiorna"){
+        if (id) {
+            status.code = "in aggiornamento"
+        } else {
+            status.code = "error"
+            status.message = "id mancante"
+            status.campo = "id"
+        }
+    }
+    else if (azione === "elimina"){
+        if (id) {
+            status.code = "in eliminazione"
+        } else {
+            status.code = "error"
+            status.message = "id mancante"
+            status.campo = "id"
+        }
+    }
 }
+
+
+
+console.log(titolo, descrizione)
 res.send(status)
 })
 
