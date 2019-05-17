@@ -11,53 +11,100 @@ router.get("/:id", (req, res) => {
     res.json(lista.list.filter(item => item.id === id))
 })
   
-router.post('/', (req, res) => {
-const body = req.body
-const {
-    id,
-    titolo,
-    descrizione,
-    azione
-} = req.body
 
+//postman in modalità post
+router.post('/', (req, res) => {
+    const body = req.body
+    const {
+        id,
+        titolo,
+        descrizione,
+        azione
+    } = req.body
+    
 const status = {}
 
-if (azione){
-    if (azione === "elenca"){
+if (azione === "elenca"){
         if (titolo) {
             status.code = "elenca"
-          } else {
+            } else {
             status.code = "error"
             status.message = "titolo mancante"
             status.campo = "titolo"
-          } 
+            } 
     }
-    else if (azione === "aggiorna"){
-        if (id) {
-            status.code = "in aggiornamento"
-        } else {
-            status.code = "error"
-            status.message = "id mancante"
-            status.campo = "id"
-        }
-    }
-    else if (azione === "elimina"){
-        if (id) {
-            status.code = "in eliminazione"
-        } else {
-            status.code = "error"
-            status.message = "id mancante"
-            status.campo = "id"
-        }
-    }
-} else {
+    else {
     status.code = "error"
-    status.message = "azione mancante"
+    status.message = "azione deve essere elenca"
     status.campo = "azione"
 
 }
 console.log(id, titolo, descrizione, azione)
 res.send(status)
 })
+
+
+//postman in modalità aggiorna
+router.put('/', (req, res) => {
+    const body = req.body
+    const {
+        id,
+        titolo,
+        descrizione,
+        azione
+    } = req.body
+    
+const status = {}
+
+if (azione === "aggiorna"){
+    if (id) {
+        status.code = "in aggiornamento"
+    } else {
+        status.code = "error"
+        status.message = "id mancante"
+        status.campo = "id"
+    }
+}
+ else {
+    status.code = "error"
+    status.message = "azione deve essere aggiorna"
+    status.campo = "azione"
+
+}
+
+console.log(id, titolo, descrizione, azione)
+res.send(status)
+})
+
+// postman in modalità delete
+router.delete('/', (req, res) => {
+    const body = req.body
+    const {
+        id,
+        titolo,
+        descrizione,
+        azione
+    } = req.body
+    
+const status = {}
+
+if (azione === "elimina"){
+    if (id) {
+        status.code = "in eliminazione"
+    } else {
+        status.code = "error"
+        status.message = "id mancante"
+        status.campo = "id"
+    }
+}
+else {
+    status.code = "error"
+    status.message = "azione deve essere elimina"
+    status.campo = "azione"
+}
+console.log(id, titolo, descrizione, azione)
+res.send(status)
+})
+
 
 module.exports = router
